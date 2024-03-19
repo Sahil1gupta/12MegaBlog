@@ -7,7 +7,7 @@ import Button from "./Button.jsx";
 import Input from "./Input.jsx";
 import RTE from "./RTE.jsx";
 import Select from "./Select.jsx";
-import {Signup} from "./Signup.jsx";
+import Signup from "./Signup.jsx";
 import Login from "./Login.jsx";
 import Post from "../pages/Post.jsx";
 import PostForm from "./post-form/PostForm.jsx";

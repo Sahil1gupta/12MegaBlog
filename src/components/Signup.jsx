@@ -6,7 +6,7 @@ import { Button, Input, Logo } from "../index";
 import authService from "../appwrite/auth";
 import { useForm } from "react-hook-form";
 
-export  function  Signup() {
+export  default function  Signup() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [error, setError] = useState(" ");
