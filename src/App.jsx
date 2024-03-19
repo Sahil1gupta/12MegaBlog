@@ -2,14 +2,15 @@ import { useState,useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import authService from './appwrite/auth.js'
 import { login,logout } from './features/authSlice/authSlice'
-import {Header,Footer} from './index.js'
+import {Header,Footer} from './components/index.js'
+
 import './App.css'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 
 function App() {
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
-
+  const navigate =useNavigate()
   useEffect(() => {
     authService.getCurrentUser()
     .then((userData) => {
@@ -17,6 +18,7 @@ function App() {
         dispatch(login({userData}))
       } else {
         dispatch(logout())
+        navigate("/login")
       }
     })
     .finally(() => setLoading(false))

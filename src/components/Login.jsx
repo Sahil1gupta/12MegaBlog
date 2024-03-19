@@ -3,22 +3,23 @@ import { Link, useNavigate } from "react-router-dom";
 import { login as authLogin } from "../features/authSlice/authSlice";
 
 import { useDispatch } from "react-redux";
-import { Button, Input, Logo } from "../index";
+import { Button, Input, Logo } from "./index";
 import authService from "../appwrite/auth";
 import { useForm } from "react-hook-form";
 
 function Login() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [error, setError] = useState(" ");
+    const [errors, setError] = useState(" ");
 
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        // formState: { errors },
     } = useForm();
 
     const onSubmit = async (data) => {
+        console.log(data)
         setError(" ");
         try {
             const session = await authService.login(data);
@@ -53,7 +54,7 @@ function Login() {
                         Sign Up
                     </Link>
                 </p>
-                {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
+                {errors && <p className="text-red-600 mt-8 text-center">{errors}</p>}
                 <form onSubmit={handleSubmit(onSubmit) }className='mt-8'>
                 <div className="space-y-5">
                     <Input
@@ -69,18 +70,18 @@ function Login() {
                         })}
                         className={`form-input ${errors.email ? 'border-red-500' : ''}`}
                     />
-                     {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+                    
                     <Input label="Password: "
                     type="password"
                     placeholder="Enter your password"
                     {...register("password",{required:true})}
                     className={`form-input ${errors.password ? 'border-red-500' : ''}`}
                     />
-                      {errors.password && <p className="text-red-500">{errors.password.message}</p>}
-                    <Button
+                    
+                    <button
                     type="Submit"
                     className="w-full"
-                    >Sing in</Button>
+                    >Sing in</button>
            
                 </div>
             </form>
