@@ -51,6 +51,7 @@ export default function Post() {
                                     Edit
                                 </Button>
                             </Link>
+                            <h1>HI Iam Post component</h1>
                             <Button bgColor="bg-red-500" onClick={deletePost}>
                                 Delete
                             </Button>

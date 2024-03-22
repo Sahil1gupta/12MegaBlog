@@ -9,7 +9,7 @@ import RTE from "./RTE.jsx";
 import Select from "./Select.jsx";
 import Signup from "./Signup.jsx";
 import Login from "./Login.jsx";
-import Post from "../pages/Post.jsx";
+// import Post from "../pages/Post.jsx";
 import PostForm from "./post-form/PostForm.jsx";
 import PostCard from "./PostCard.jsx";
 import AuthLayout from "./AuthLayout.jsx";
@@ -27,7 +27,7 @@ export {
     Login,
     PostForm,
     PostCard,
-    Post,
+    // Post,
     AuthLayout
 }
 
