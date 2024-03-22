@@ -1,5 +1,5 @@
 import { Client, ID, Databases, Storage, Query } from "appwrite";
-import config from "../config/config"
+import config from "../config/config";
 
 // https://appwrite.io/docs/references/cloud/client-web/databases#getDocument   --refer this documentation
 
@@ -19,7 +19,7 @@ export class Service{
       this.bucket=new Storage(this.client);
     }
 
-    async createPost({title,content,featuredImage,status,userId,slug}){
+    async createPost({title,slug,content,featuredImage,status,userId}){
 
         try {
             return  await this.databases.createDocument(config.appwriteDatabseId, config.appwriteCollectionId, slug, {
@@ -64,7 +64,7 @@ export class Service{
     async getPost(slug){
         try {
             return await this.databases.getDocument(
-                config.appwriteDatabaseId,
+                config.appwriteDatabseId,
                 config.appwriteCollectionId,
                 slug
             
@@ -78,7 +78,7 @@ export class Service{
     async getPosts(queries = [Query.equal("status", "active")]){
         try {
             return await this.databases.listDocuments(
-                config.appwriteDatabaseId,
+                config.appwriteDatabseId,
                 config.appwriteCollectionId,
                 queries,
                 
