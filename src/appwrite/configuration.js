@@ -10,7 +10,7 @@ export class Service{
     databases
     storage //bucket
 
-    Constructor(){
+    constructor(){
     this.client
       .setEndpoint(config.appwriteUrl)
       .setProject(config.appwriteProjectId);
@@ -93,7 +93,9 @@ export class Service{
     // file upload service
 //https://appwrite.io/docs/products/storage/upload-download
     async uploadFile(file){
+        console.log(file)
         try {
+           
             return await this.bucket.createFile(
                 config.appwriteBucketId,
                 ID.unique(),
@@ -119,10 +121,16 @@ export class Service{
     }
 
     getFilePreview(fileId){
+        console.log(fileId)
+       try{
         return this.bucket.getFilePreview(
             config.appwriteBucketId,
             fileId
         )
+       }
+       catch(error){
+        console.log("Appwrite serive :: getFilePreview :: error", error)
+       }
     }
 }
 

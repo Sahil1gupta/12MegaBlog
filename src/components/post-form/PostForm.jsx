@@ -6,8 +6,8 @@ import {useNavigate} from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 
-function PostForm(post) {  //agar user edit pe click krega to post yaha pass ho jayega
-
+function PostForm({post}) {  //agar user edit pe click krega to post yaha pass ho jayega
+    console.log(post)
     const {register,handleSubmit,watch,setValue,getValues,control,errors} = useForm({
             defaultValues:{
             title:post?.title || '', //agar user edit kar raha hai toh default value set karna padega jo ki apne ko backend se mil jayega jo ki ye post me h, varna ek naya post create krne aaya hai to title ki default value empty rahega to chalega
@@ -18,13 +18,13 @@ function PostForm(post) {  //agar user edit pe click krega to post yaha pass ho 
     } )
 
     const navigate=useNavigate();
-    const userData=useSelector(state=>state.authSlice.userData);
+    const userData=useSelector(state=>state.auth.userData);
 
-    const submit=async(data)=>{
+    const submit=async (data)=>{
         console.log(data)
        if(post){  //ye tb execute hoga jb user edit pe click krega
         const file = data.image[0] ? await AppwriteService.uploadFile(data.image[0]) : null;  //getting image id by using uploading file feature
-        
+        console.log(file)
         if(file){
             AppwriteService.deleteFile(post.featuredImage)  // deleting previous image featuredImage= it is equivalent to image id.
         }
@@ -39,7 +39,7 @@ function PostForm(post) {  //agar user edit pe click krega to post yaha pass ho 
        }
        else {
         const file = await AppwriteService.uploadFile(data.image[0]);
-
+        console.log(file)
         if (file) {
             const fileId = file.$id;
             data.featuredImage = fileId;

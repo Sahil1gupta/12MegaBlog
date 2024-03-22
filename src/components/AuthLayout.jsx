@@ -7,7 +7,7 @@ const AuthLayout = ({children,authentication=true}) => {
     const navigate=useNavigate();
     const [loader,setLoader]=useState(true);
 
-    const authStatus=useSelector((state)=>state.authSlice.status)
+    const authStatus=useSelector((state)=>state.auth.status)
    
    
     useEffect(()=>{

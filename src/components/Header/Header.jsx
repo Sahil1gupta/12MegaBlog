@@ -8,7 +8,7 @@ import LogoutBtn from "./LogoutBtn";
 
 
 export default function Header() {
-    const authStatus=useSelector((state)=>state.authSlice.status)
+    const authStatus=useSelector((state)=>state.auth.status)
     const navigate=useNavigate();
 
 
